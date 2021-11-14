@@ -53,3 +53,12 @@ def loglinear_nlogn(n):
         n //= 2  # logarithmic time
         for i in range(temp):  # linear time
             print(i)
+
+
+def factorial(n):
+    if n == 0:
+        print('***')
+        return
+    for i in range(n):
+        factorial(n - 1)
+        # After drawing graph this will result in factorial time complexity
