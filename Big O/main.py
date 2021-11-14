@@ -45,3 +45,11 @@ def logarithmic1(n):
 def logarithmic2(n):
     while n > 1:
         n //= 2
+
+
+def loglinear_nlogn(n):
+    temp = n
+    while n > 1:
+        n //= 2  # logarithmic time
+        for i in range(temp):  # linear time
+            print(i)
