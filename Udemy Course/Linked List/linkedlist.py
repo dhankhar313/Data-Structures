@@ -120,6 +120,7 @@ class LinkedList:
         self.head = prev
         print(self)
 
+    @staticmethod
     def recursive_reverse_print(head):
         # Doesn't actually reverse the list, Just prints it from tail end
         if not head:
