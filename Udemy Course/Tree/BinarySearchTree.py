@@ -48,12 +48,28 @@ def minValueNode(rootNode):
     return node
 
 
-def deleteNode(rootNode, value):
-    if not rootNode:
+def deleteNode(rootNode, nodeValue):
+    if rootNode is None:
         return rootNode
-    if value <= rootNode.data:
-        pass
-    # Incomplete 
+    if nodeValue < rootNode.data:
+        rootNode.leftChild = deleteNode(rootNode.leftChild, nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode.rightChild = deleteNode(rootNode.rightChild, nodeValue)
+    else:
+        if rootNode.leftChild is None:
+            temp = rootNode.rightChild
+            rootNode = None
+            return temp
+
+        if rootNode.rightChild is None:
+            temp = rootNode.leftChild
+            rootNode = None
+            return temp
+
+        temp = minValueNode(rootNode.rightChild)
+        rootNode.data = temp.data
+        rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+    return rootNode
 
 
 def invertBST(rootNode):
