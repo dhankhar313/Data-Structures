@@ -130,6 +130,53 @@ def leftView(rootNode):
             n -= 1
 
 
+def zigzagTraversal(rootNode):
+    # Base Case
+    if not rootNode:
+        return
+
+    # Create two stacks to store current
+    # and next level
+    currLevel = []
+    nextLevel = []
+
+    # if flag is true push nodes from
+    # left to right otherwise from
+    # right to left
+    flag = True
+
+    # append rootNode to currLevel stack
+    currLevel.append(rootNode)
+
+    # Check if stack is empty
+    while len(currLevel) > 0:
+        # pop from stack
+        temp = currLevel.pop(-1)
+        # print the data
+        print(temp.data, " ", end="")
+
+        if flag:
+            # if flag is true push left
+            # before right
+            if temp.left:
+                nextLevel.append(temp.left)
+            if temp.right:
+                nextLevel.append(temp.right)
+        else:
+            # else push right before left
+            if temp.right:
+                nextLevel.append(temp.right)
+            if temp.left:
+                nextLevel.append(temp.left)
+
+        if len(currLevel) == 0:
+            # reverse flag to push node in
+            # opposite order
+            flag = not flag
+            # swapping of stacks
+            currLevel, nextLevel = nextLevel, currLevel
+
+
 if __name__ == "__main__":
     tree = BSTNode(None)
     insertNode(tree, 70)
