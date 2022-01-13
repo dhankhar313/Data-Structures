@@ -9,12 +9,16 @@ def naive_fib(n):
 def dp_fib(n, memo={}):
     if n in memo.keys():
         return memo[n]
-    if n <= 2:
+    if 0 <= n <= 2:
         return 1
     memo[n] = dp_fib(n - 1, memo) + dp_fib(n - 2, memo)
-    return memo[n]
+    for i in memo.values():
+        print(i)
 
+
+# print(dp_fib(int(input())))
 
 if __name__ == "__main__":
     print(naive_fib(7))
-    print(dp_fib(50))
+    res = dp_fib(5)
+    # print(res.keys())

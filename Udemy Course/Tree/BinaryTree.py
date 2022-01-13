@@ -13,6 +13,14 @@ def preOrder(rootNode):
     preOrder(rootNode.rChild)
 
 
+def preOrder1(rootNode):
+    if not rootNode:
+        return []
+    lChild = preOrder1(rootNode.lChild)
+    rChild = preOrder1(rootNode.rChild)
+    return [rootNode.data, *lChild, *rChild]
+
+
 def inOrder(rootNode):
     if not rootNode:
         return
@@ -150,8 +158,10 @@ if __name__ == '__main__':
     hot.rChild = coffee
     cold.lChild = coke
     cold.rChild = pepsi
-    # print('Preorder Traversal:')
-    # preOrder(tree)
+    print('Preorder Traversal:')
+    preOrder(tree)
+    print('Preorder Traversal:')
+    print(preOrder1(tree))
     # print('\nInorder Traversal:')
     # inOrder(tree)
     # print('\nPostOrder Traversal:')
@@ -166,6 +176,6 @@ if __name__ == '__main__':
     # print(insertNode(tree, newNode))
     # print(getDeepestNode(tree))
     # deleteDeepestNode(tree, getDeepestNode(tree))
-    levelOrder(tree)
-    deleteNode(tree, 'Coffee')
-    levelOrder(tree)
+    # levelOrder(tree)
+    # deleteNode(tree, 'Coffee')
+    # levelOrder(tree)
